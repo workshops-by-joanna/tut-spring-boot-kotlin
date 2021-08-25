@@ -46,7 +46,7 @@ class RepositoriesTests @Autowired constructor(
 	fun `When findByFirstnameContainingIgnoreCase then return matching users`() {
 		setup_test_data()
 
-		val users = userRepository.findByFirstnameContaining("anna")
+		val users = userRepository.findByFirstnameContainingIgnoreCase("anna")
 		assertThat(users).hasSize(2)
 	}
 
@@ -63,7 +63,7 @@ class RepositoriesTests @Autowired constructor(
 		setup_test_data()
 
 		val users = userRepository.getAllAuthorsBySpringExpression()
-		assertThat(users).hasSize(4)
+		assertThat(users).hasSize(3)
 	}
 
 	@Test
@@ -74,7 +74,7 @@ class RepositoriesTests @Autowired constructor(
 
 		val example = Example.of(user)
 		val result = userRepository.findOne(example)
-		assertThat(result.get().description).isEqualTo("Everything is")
+		assertThat(result.get().description).isEqualTo("Everything is awesome")
 	}
 
 
